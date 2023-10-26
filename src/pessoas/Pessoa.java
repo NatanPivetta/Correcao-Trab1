@@ -1,7 +1,15 @@
 package pessoas;
 import java.util.Date;
 
+
+import javax.persistence.*;
+
 public abstract class Pessoa{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="ID")
+	private Long id;
     private String nome;
     private Date dataNascimento;
     private static int total;

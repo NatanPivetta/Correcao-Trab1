@@ -12,14 +12,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 import java.util.TreeSet;
+import java.util.Collections;
+import java.util.List;
 
 import javax.swing.*;
 
 public class Menu {
 
 	private static ArrayList<Socio> socios = new ArrayList<>();
-	private static ArrayList<Locacao> locacoes = new ArrayList<>();
+	private static List<Locacao> locacoes = new ArrayList<>();
 
 	public static int montaMenu() {
 		String str = "";
@@ -32,10 +35,12 @@ public class Menu {
 	public static void cadastraLocacao() throws SQLException, ParseException {
 		Locacao loc = Panel.cadastraLocacao();
 		locacoes.add(loc);
-		
+		Collections.sort(locacoes);
 		for (Locacao locacao : locacoes) {
 			System.out.println("Loc: " + loc.getTitulo() + " " + loc.getValor());
 		}
+		
+		
 
 	}
 
@@ -92,6 +97,7 @@ public class Menu {
 
 	// opcao 5 do menu
 	public static String listaLocacao() {
+		Collections.sort(locacoes);
 		String s = "Locacoes: \n";
 		for (Locacao locacao : locacoes) {
 			s += locacao.toString();

@@ -6,7 +6,9 @@ import util.ValidaData;
 import java.util.Date;
 import java.util.TreeSet;
 
-public final class Locacao implements ValidaData{
+import java.util.Collections;
+
+public final class Locacao implements ValidaData, Comparable<Locacao>{
     private Date dataRetirada;
     private Date dataDevolucao;
     private double valor;
@@ -71,5 +73,10 @@ public final class Locacao implements ValidaData{
     	this.socio.toString();
     	
     	return s;
+    }
+    
+    @Override
+    public int compareTo(Locacao loc) {
+    	return Double.compare(this.valor, loc.valor);
     }
 }
